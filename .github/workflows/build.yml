@@ -52,4 +52,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          script: ls
+          script: |
+            docker pull ghcr.io/erkkki/docker-node-test:main
+            docker run -d --publish 8080:8080 ghcr.io/erkkki/docker-node-test:main
+            docker system prune -f
